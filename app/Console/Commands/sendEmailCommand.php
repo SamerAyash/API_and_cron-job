@@ -40,7 +40,7 @@ class sendEmailCommand extends Command
      */
     public function handle()
     {
-        $users = User::where('numbersOfPosts','!=',1);
+        $users = User::where('numbersOfPosts','!=',0);
         foreach ($users as $user) {
          $user->numbersOfPosts = 0;
          $user->update();
