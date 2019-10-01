@@ -5,6 +5,7 @@ namespace App\Console;
 use App\User;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Artisan;
 
 class Kernel extends ConsoleKernel
 {
@@ -34,7 +35,7 @@ class Kernel extends ConsoleKernel
                      $this->userN->numbersOfPosts = 0;
                      $this->userN->update();
                  })
-                 ->everyMinute();
+                 ->everyMinute()->runInBackground();
          }
     }
 

@@ -41,13 +41,21 @@ class PostController extends Controller
             'title'=>'required',
             'details'=>'required',
         ])->validate();
+        if (Auth::user()->numbersOfPosts == 0){
 
         $post =Post::create([
             'title'=>$request->title,
             'details'=>$request->details,
             'user_id'=>Auth::id(),
         ]);
+            Auth::user()->numbersOfPosts = Auth::user()->numbersOfPosts +1 ;
+            Auth::user()->update();
         return new PostResource($post);
+
+            }
+
+        return ['message'=>'Opportunities to publish your posts are over today'];
+
 
     }
 
