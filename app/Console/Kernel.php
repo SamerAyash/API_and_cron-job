@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected $userN;
     protected $commands = [
-        //
+        'App\Console\Commands\sendEmailCommand'
     ];
 
     /**
