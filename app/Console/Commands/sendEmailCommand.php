@@ -42,7 +42,7 @@ class sendEmailCommand extends Command
     {
         $users = User::where('numbersOfPosts','!=',1);
         foreach ($users as $user) {
-            $user->numbersOfPosts = 0;
+         $user->numbersOfPosts = 0;
          $user->update();
          Mail::to($user->email)->send(new notificationMail($user->name));
         }
