@@ -29,6 +29,6 @@ class sendEmailJop implements ShouldQueue
      */
     public function handle()
     {
-        //
+
     }
 }

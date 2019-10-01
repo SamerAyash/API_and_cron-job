@@ -14,7 +14,7 @@ class sendEmailCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'send:email';
+    protected $signature = 'email:send {id}';
 
     /**
      * The console command description.
@@ -40,11 +40,10 @@ class sendEmailCommand extends Command
      */
     public function handle()
     {
-        $users =User::all()->reverse()->take(2);
-        foreach ($users as $user){
+        $user = User::find($this->argument('id'));
             Mail::to($user->email)->send(new notificationMail($user->name));
-        }
         $this->info('Mails were send successfully');
+
 
     }
 }

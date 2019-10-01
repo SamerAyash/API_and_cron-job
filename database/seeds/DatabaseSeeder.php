@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
-       /* for ($i=0; $i<50 ; $i++){
+       /*for ($i=0; $i<50 ; $i++){
             $faker =\Faker\Factory::create();
             $user =  User::create([
                 'name'=>$faker->name,
@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             $user->save();
         }*/
 
-    /*    for ($i=0; $i<100 ; $i++){
+       /* for ($i=0; $i<100 ; $i++){
 
             $faker =\Faker\Factory::create();
             $post =  Post::create([
