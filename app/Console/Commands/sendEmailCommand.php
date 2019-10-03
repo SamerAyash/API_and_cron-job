@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Jobs\sendEmailJop;
 use App\Mail\notificationMail;
 use App\User;
 use Illuminate\Console\Command;
@@ -40,12 +41,8 @@ class sendEmailCommand extends Command
      */
     public function handle()
     {
-        $users = User::where('numbersOfPosts','!=',0);
-        foreach ($users as $user) {
-         $user->numbersOfPosts = 0;
-         $user->update();
-         Mail::to($user->email)->send(new notificationMail($user->name));
-        }
+
+        sendEmailJop::dispatch();
         $this->info('Mails were send successfully');
 
     }

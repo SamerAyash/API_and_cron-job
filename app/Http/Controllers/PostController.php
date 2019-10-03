@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\PostCreated;
 use App\Http\Resources\PostResource;
 use App\Post;
 use Illuminate\Http\Request;
@@ -41,13 +42,14 @@ class PostController extends Controller
             'title'=>'required',
             'details'=>'required',
         ])->validate();
-        if (Auth::user()->numbersOfPosts == 0){
+        if (Auth::user()->numbersOfPosts == 10){
 
         $post =Post::create([
             'title'=>$request->title,
             'details'=>$request->details,
             'user_id'=>Auth::id(),
         ]);
+        event(new PostCreated($post));
             Auth::user()->numbersOfPosts = Auth::user()->numbersOfPosts +1 ;
             Auth::user()->update();
         return new PostResource($post);
